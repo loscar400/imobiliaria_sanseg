@@ -1,0 +1,156 @@
+localStorage
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Imobiliária</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="main-header">
+    <nav class="navbar">
+      <a href="/" class="logo">Imobiliária</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html">Início</a></li>
+        <li><span id="admin-user" class="admin-user"></span></li>
+        <li><button id="logout" class="logout-btn">Sair</button></li>
+        <li><button id="theme-toggle">Modo Claro</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main>
+    <section class="admin-section">
+      <div class="admin-card">
+        <h2>Painel Administrativo</h2>
+        <p class="admin-subtitle">Cadastre novos imóveis no sistema</p>
+
+        <form id="upload-form" enctype="multipart/form-data" class="admin-form">
+          <input type="text" name="titulo" placeholder="Título do imóvel" required />
+
+          <textarea name="descricao" placeholder="Descrição completa do imóvel" required></textarea>
+
+          <input type="text" name="endereco" placeholder="Endereço completo" required />
+
+          <input type="number" name="preco" placeholder="Preço (R$)" required />
+
+          <input type="text" name="cidade" placeholder="Cidade" value="Uberlândia - MG" required />
+
+          <input type="text" name="bairro" placeholder="Bairro" required />
+
+          <h3 style="margin-top:20px;">Cômodos do imóvel</h3>
+
+          <input type="number" name="quartos" placeholder="Quartos" min="0" required />
+
+          <input type="number" name="banheiros" placeholder="Banheiros" min="0" required />
+
+          <input type="number" name="salas" placeholder="Salas" min="0" required />
+
+          <input type="number" name="cozinhas" placeholder="Cozinhas" min="0" required />
+
+          <input type="number" name="suites" placeholder="Suítes" min="0" required />
+
+          <input type="number" name="garagem" placeholder="Vagas de garagem" min="0" required />
+
+          <select name="tipo" required>
+            <option value="">Selecione o tipo</option>
+            <option value="compra">Compra</option>
+            <option value="venda">Venda</option>
+            <option value="aluguel">Aluguel</option>
+          </select>
+
+          <label for="imagens" class="file-label">Selecione as imagens (pode escolher várias):</label>
+          <input type="file" id="imagens" name="imagens" accept="image/*" multiple required />
+
+          <button type="submit" class="admin-btn">Cadastrar Imóvel</button>
+        </form>
+
+
+        <p id="status-msg" class="status-msg"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="footer-columns">
+      <div class="footer-about">
+        <h4>Imobiliária</h4>
+        <p>Encontre o imóvel ideal com segurança e praticidade.</p>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contato</h4>
+        <p><strong>Camila Bento</strong></p>
+        <p>Creci 52147</p>
+        <p>📞 (34) 99662-6666</p>
+        <p>📱 @camilabentobroker</p>
+      </div>
+    </div>
+
+    <p class="footer-bottom">&copy; 2025 Imobiliária. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="/theme.js"></script>
+  <script>
+    // Proteção de acesso
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || user.role !== "admin") {
+      alert("Acesso restrito! Faça login como admin.");
+      window.location.href = "/login.html";
+    }
+
+    // Exibe nome do admin
+    const adminUser = document.getElementById("admin-user");
+    if (adminUser && user) adminUser.textContent = user.nome;
+
+    // Logout
+    document.getElementById("logout").addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "/login.html";
+    });
+
+    // Menu mobile
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("nav-links").classList.toggle("active");
+    });
+
+    // Envio do form
+    document.getElementById("upload-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const statusMsg = document.getElementById("status-msg");
+
+      try {
+        const response = await fetch("http://localhost:3000/api/imoveis", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+          statusMsg.textContent = "Imóvel cadastrado com sucesso!";
+          statusMsg.style.color = "limegreen";
+          e.target.reset();
+        } else {
+          statusMsg.textContent = " " + (data.error || "Falha ao cadastrar imóvel");
+          statusMsg.style.color = "red";
+        }
+      } catch (err) {
+        console.error(err);
+        statusMsg.textContent = "Erro ao conectar com o servidor.";
+        statusMsg.style.color = "orange";
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SanSeg Imoveis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Simonetta:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/login" class="logo">
+        <img src="img/Logotipo PNG 2.png" alt="Logo" class="logo-img">
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1>Mais do que imóveis</h1>
+          <p>Uma experiência segura para viver e investir bem.</p>
+          <p>Oportunidades únicas em imóveis disponíveis para você.</p>
+
+          <!--barra com as buscas-->
+          <form id="search-form" class="search-form">
+
+            <!-- tipo do imovel -->
+            <select id="tipo" class="search-select">
+              <option value="">Tipo</option>
+              <option value="casa">Casa</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="terreno">Terreno</option>
+              <option value="comercial">Comercial</option>
+            </select>
+
+            <!--cidade-->
+            <select id="cidade" class="search-select">
+              <option value="" selected>Selecione a cidade</option>
+              <option value="Uberlândia - MG">Uberlândia - MG</option>
+            </select>
+
+            <!-- bairro-->
+            <select id="bairro" class="search-select">
+              <option value="">Bairro</option>
+              <option value="Centro">Centro</option>
+              <option value="Cidade Jardim">Cidade Jardim</option>
+              <option value="Custódio Pereira">Custódio Pereira</option>
+              <option value="Granada">Granada</option>
+              <option value="Jaraguá">Jaraguá</option>
+              <option value="Jardim Karaíba">Jardim Karaíba</option>
+              <option value="Jardim Patrícia">Jardim Patrícia</option>
+              <option value="Luizote de Freitas">Luizote de Freitas</option>
+              <option value="Martins">Martins</option>
+              <option value="Morada da Colina">Morada da Colina</option>
+              <option value="Osvaldo Rezende">Osvaldo Rezende</option>
+              <option value="Pacaembu">Pacaembu</option>
+              <option value="Panorama">Panorama</option>
+              <option value="Santa Luzia">Santa Luzia</option>
+              <option value="Santa Mônica">Santa Mônica</option>
+              <option value="Saraiva">Saraiva</option>
+              <option value="Segismundo Pereira">Segismundo Pereira</option>
+              <option value="Shopping Park">Shopping Park</option>
+              <option value="Tibery">Tibery</option>
+              <option value="Umuarama">Umuarama</option>
+            </select>
+
+            <!-- quartos-->
+            <select id="quartos" class="search-select">
+              <option value="">Quartos</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5+</option>
+            </select>
+
+            <!--valor minimo-->
+            <input type="number" id="minPreco" placeholder="Valor mín (R$)" class="search-input" min="0" />
+
+            <!-- valor max-->
+            <input type="number" id="maxPreco" placeholder="Valor máx (R$)" class="search-input" min="0" />
+
+            <input type="hidden" id="cidade" value="Uberlândia - MG" />
+
+            <button type="submit" id="search-button" class="search-button">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    <!--EXIBE OS CARDS NA TELA-->
+    <section id="todos-imoveis" class="property-list">
+      <H2>Imoveis a Venda</H2>
+
+      <div id="todos-imoveis-container" class="grid-container">
+        <p>Carregando imoveis</p>
+      </div>
+      <section>
+
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+      <img src="img/Logotipo PNG 2.png" alt="Logo Camila Bento" class="footer-logo">
+    </div>
+  </footer>
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

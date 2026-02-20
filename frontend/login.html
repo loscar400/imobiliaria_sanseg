@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login para Administração</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Simonetta:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+  <section class="login-section">
+    <div class="login-card">
+      <img src="img/Logotipo PNG 1.png" alt="Logo" class="logo-img">
+
+      <form id="login-form" class="login-form">
+        <label for="email">Usuário (e-mail)</label>
+        <input type="text" id="email" required />
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" required />
+
+        <button type="submit" class="btn-dark">ENTRAR</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+  <!-- SCRIPT -->
+  <script src="theme.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      try {
+        const res = await fetch("/api/usuarios/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          alert(data.error || "Erro no login");
+          return;
+        }
+
+        // 🔐 SALVA TOKEN E USUÁRIO
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        // 🚀 REDIRECIONA CORRETAMENTE
+       window.location.href = "/admin/admin-dashboard.html";
+
+      } catch (err) {
+        console.error("Erro:", err);
+        alert("Erro ao conectar com o servidor.");
+      }
+    });
+  </script>
+</body>
+
+</html>

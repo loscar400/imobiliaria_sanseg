@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Cliente</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body class="admin-app">
+
+  <!-- TOPO -->
+  <header class="admin-topbar">
+    <div class="admin-title">Painel Administrativo</div>
+    <div class="admin-user">
+      <span>Admin</span>
+      <button id="logout">Sair</button>
+    </div>
+  </header>
+
+  <!-- MENU -->
+  <nav class="admin-menu-top">
+    <a href="/admin/admin-dashboard.html">Dashboard</a>
+    <a href="/admin/admin-imoveis-listar.html">Imóveis</a>
+    <a href="/admin/admin-imoveis-cadastro.html">Cadastrar Imóvel</a>
+    <a href="/admin/admin-clientes-listar.html">Clientes</a>
+    <a href="/admin/admin-clientes-cadastro.html">Cadastrar Cliente</a>
+    <a href="/admin/admin-proprietarios-listar.html">Proprietários</a>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <main class="admin-content">
+    <h2>Editar Cliente</h2>
+
+    <form id="formCliente" class="admin-form">
+
+      <!-- DADOS PRINCIPAIS -->
+      <input name="nome" placeholder="Nome" required>
+
+      <input name="telefone" id="telefone" placeholder="Telefone">
+
+      <input name="cpf" id="cpf" placeholder="CPF">
+
+      <input name="email" placeholder="Email">
+
+      <input name="captador" placeholder="Captador">
+
+      <!-- ENDEREÇO -->
+      <h3>Endereço</h3>
+
+      <input id="cep" name="cep" placeholder="CEP">
+
+      <input id="endereco" name="endereco" placeholder="Endereço">
+
+      <input id="bairro" name="bairro" placeholder="Bairro">
+
+      <input id="cidade" name="cidade" placeholder="Cidade">
+
+      <input id="uf" name="uf" placeholder="UF">
+      <select name="status">
+        <option value="DISPONIVEL">Disponível</option>
+        <option value="VENDIDO">Vendido</option>
+        <option value="ALUGADO">Alugado</option>
+      </select>
+
+      <button type="submit">Salvar Alterações</button>
+    </form>
+  </main>
+
+
+
+  <script src="/admin/admin-clientes-editar.js"></script>
+</body>
+
+</html>

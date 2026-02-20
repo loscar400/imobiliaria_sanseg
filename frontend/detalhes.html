@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SanSeg Imoveis</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Simonetta:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/login" class="logo">
+            <img src="img/Logotipo PNG 2.png" alt="Logo" class="logo-img">
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+    </nav>
+    </header>
+
+    <!-- ======== PÁGINA DE DETALHES ======== -->
+    <main class="detalhes-container" id="detalhes-container">
+        <p>Carregando detalhes do imóvel...</p>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <img src="img/Logotipo PNG 2.png" alt="Logo Camila Bento" class="footer-logo">
+        </div>
+    </footer>
+
+
+    <!-- ======== SCRIPTS ======== -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+    </script>
+    <script src="js/detalhes.js"></script>
+</body>
+
+</html>

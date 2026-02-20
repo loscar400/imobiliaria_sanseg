@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imobiliária</title>
+</head>
+<body>
+    <main class="admin-content">
+    <h1>Adicionar Novo Imóvel</h1>
+    <form id="upload-form">
+        <!-- ... (campos do formulário) ... -->
+        <button type="submit">Adicionar Imóvel</button>
+    </form>
+</main>
+<script>
+    document.getElementById('upload-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        try {
+            const response = await fetch('http://localhost:3000/api/imoveis', {
+                method: 'POST',
+                body: formData,
+            });
+            if (response.ok) {
+                alert('Imóvel adicionado com sucesso!');
+                form.reset();
+            } else {
+                const data = await response.json();
+                alert(`Erro: ${data.error}`);
+            }
+        } catch (error) {
+            alert('Erro ao conectar com o servidor.');
+        }
+    });
+</script>
+</body>
+</html>

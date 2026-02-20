@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Administrativo</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body class="admin-app">
+
+  <!-- TOPO PRINCIPAL -->
+  <header class="admin-topbar">
+    <div class="admin-title">Painel Administrativo</div>
+
+    <div class="admin-user">
+      <span>Admin</span>
+      <button id="logout">Sair</button>
+    </div>
+  </header>
+
+  <!-- MENU HORIZONTAL -->
+  <nav class="admin-menu-top">
+    <a href="/admin/admin-dashboard.html">Dashboard</a>
+    <a href="/admin/admin-imoveis-listar.html">Imóveis</a>
+    <a href="/admin/admin-imoveis-cadastro.html">Cadastrar Imóvel</a>
+    <a href="/admin/admin-clientes-listar.html">Clientes</a>
+    <a href="/admin/admin-clientes-cadastro.html">Cadastrar Cliente</a>
+    <a href="/admin/admin-proprietarios-listar.html">Proprietários</a>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <main class="admin-content">
+
+    <h2>Cadastrar Cliente</h2>
+
+    <form id="formCliente" class="admin-form">
+      <input name="nome" placeholder="Nome" required>
+      <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
+      <input type="text" id="cpf" name="cpf" placeholder="CPF">
+      <input name="email" placeholder="E-mail">
+      <input name="captador" placeholder="Captador">
+
+
+      <div class="box">
+        <h4>Endereço</h4>
+
+        <div class="grid-localizacao">
+          <input id="cep" name="cep" placeholder="CEP">
+          <input id="endereco" name="endereco" placeholder="Endereço">
+          <input id="bairro" name="bairro" placeholder="Bairro">
+          <input id="cidade" name="cidade" placeholder="Cidade">
+          <input id="uf" name="uf" placeholder="UF">
+        </div>
+      </div>
+
+      <div class="actions full">
+        <button type="submit">Salvar Cliente</button>
+      </div>
+    </form>
+    </main>
+
+    <script src="/admin/admin-clientes-cadastro.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Imóvel</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body class="admin-app">
+
+  <!-- TOPO -->
+  <header class="admin-topbar">
+    <div class="admin-title">Painel Administrativo</div>
+    <div class="admin-user">
+      <span>Admin</span>
+      <button id="logout">Sair</button>
+    </div>
+  </header>
+
+  <!-- MENU -->
+  <nav class="admin-menu-top">
+    <a href="/admin/admin-dashboard.html">Dashboard</a>
+    <a href="/admin/admin-imoveis-listar.html">Imóveis</a>
+    <a href="/admin/admin-imoveis-cadastro.html">Cadastrar Imóvel</a>
+    <a href="/admin/admin-clientes-listar.html">Clientes</a>
+    <a href="/admin/admin-clientes-cadastro.html">Cadastrar Cliente</a>
+    <a href="/admin/admin-proprietarios-listar.html">Proprietários</a>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <main class="admin-content">
+
+    <h2>Editar Imóvel</h2>
+
+    <form id="formImovel" class="admin-form" enctype="multipart/form-data">
+
+      <input name="titulo" placeholder="Título do imóvel" required>
+      <input name="captador" placeholder="Captador responsável" required>
+      <input name="proprietario" placeholder="Nome do proprietário" required>
+
+      <select name="tipo" required>
+        <option value="">Tipo</option>
+        <option value="CASA">Casa</option>
+        <option value="APARTAMENTO">Apartamento</option>
+        <option value="TERRENO">Terreno</option>
+      </select>
+
+      <select name="finalidade" required>
+        <option value="VENDA">Venda</option>
+        <option value="ALUGUEL">Aluguel</option>
+      </select>
+
+      <h3>Características do Imóvel</h3>
+      <div class="grid-campos">
+        <input type="number" name="areaTotal" step="0.01" min="0" placeholder="Área total (m²)">
+        <input type="number" name="areaConstruida" step="0.01" min="0" placeholder="Área total construída (m²)">
+        <input type="number" name="quartos" placeholder="Quartos">
+        <input type="number" name="suites" placeholder="Suítes">
+        <input type="number" name="banheiros" placeholder="Banheiros">
+        <input type="number" name="salas" placeholder="Salas">
+        <input type="number" name="cozinhas" placeholder="Cozinhas">
+        <input type="number" name="garagem" placeholder="Vagas de garagem">
+      </div>
+
+      <textarea name="descricao" placeholder="Descrição do imóvel" required></textarea>
+
+      <input name="cep" id="cep" placeholder="CEP">
+      <input name="endereco" id="endereco" placeholder="Endereço">
+      <input name="bairro" id="bairro" placeholder="Bairro">
+      <input name="cidade" id="cidade" placeholder="Cidade">
+      <input name="uf" id="uf" placeholder="UF">
+
+      <input name="preco" placeholder="Preço do imóvel">
+
+      <label>Adicionar novas imagens</label>
+      <input type="file" name="imagens" multiple accept="image/*">
+      <div id="preview-imagens-existentes" class="preview-imagens"></div>
+
+      <button type="submit">Salvar Alterações</button>
+
+    </form>
+  </main>
+
+  <!-- JS CORRETO -->
+  <script src="/admin/admin-imoveis-editar.js"></script>
+</body>
+
+</html>

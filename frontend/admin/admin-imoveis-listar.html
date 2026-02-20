@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Administrativo</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body class="admin-app">
+
+  <!-- TOPO PRINCIPAL -->
+  <header class="admin-topbar">
+    <div class="admin-title">Painel Administrativo</div>
+
+    <div class="admin-user">
+      <span>Admin</span>
+      <button id="logout">Sair</button>
+    </div>
+  </header>
+
+  <!-- MENU HORIZONTAL -->
+  <nav class="admin-menu-top">
+    <a href="/admin/admin-dashboard.html">Dashboard</a>
+    <a href="/admin/admin-imoveis-listar.html">Imóveis</a>
+    <a href="/admin/admin-imoveis-cadastro.html">Cadastrar Imóvel</a>
+    <a href="/admin/admin-clientes-listar.html">Clientes</a>
+    <a href="/admin/admin-clientes-cadastro.html">Cadastrar Cliente</a>
+    <a href="/admin/admin-proprietarios-listar.html">Proprietários</a>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <main class="admin-content">
+
+    <!-- CABEÇALHO PADRÃO -->
+    <div class="page-header">
+      <h2>Gerenciar Imóveis</h2>
+
+      <div class="page-actions">
+        <input type="text" id="buscar" placeholder="Buscar imóvel">
+      </div>
+    </div>
+
+    <!-- LISTAGEM -->
+    <div class="admin-card">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Tipo</th>
+            <th>Captador</th>
+            <th>Proprietário</th>
+            <th>Cidade</th>
+            <th>Bairro</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabela-imoveis">
+          <!-- JS preenche -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- JS -->
+  <script src="/admin/admin-base.js"></script>
+  <script src="/admin/admin-imoveis-listar.js"></script>
+</body>
+</html>
